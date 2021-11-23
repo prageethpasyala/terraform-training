@@ -5,8 +5,6 @@ resource "aws_s3_bucket" "b" {
   versioning {
     enabled = true
   }
-
-
   tags = {
     Name        = "talent-academy-tfstates"
     Environment = "Test"
