@@ -82,7 +82,7 @@ resource "aws_subnet" "main_private_1c" {
 }
 
 # -------------NAT---------------
-    # ELASTIC IP
+# ELASTIC IP
 resource "aws_eip" "nat_a_eip" {
     vpc = true
 }
@@ -100,9 +100,14 @@ resource "aws_nat_gateway" "nat_a" {
   ]
 }
 
+
+# ELASTIC IP
+resource "aws_eip" "nat_b_eip" {
+    vpc = true
+}
 # nat public b
 resource "aws_nat_gateway" "nat_b" {
-    allocation_id = aws_eip.nat_a_eip.id
+    allocation_id = aws_eip.nat_b_eip.id
     subnet_id = aws_subnet.public_b.id
   
   tags ={
@@ -114,9 +119,14 @@ resource "aws_nat_gateway" "nat_b" {
   ]
 }
 
+
+# ELASTIC IP
+resource "aws_eip" "nat_c_eip" {
+    vpc = true
+}
 # nat public c
 resource "aws_nat_gateway" "nat_c" {
-    allocation_id = aws_eip.nat_a_eip.id
+    allocation_id = aws_eip.nat_c_eip.id
     subnet_id = aws_subnet.public_c.id
   
   tags ={
